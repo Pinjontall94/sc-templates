@@ -1,16 +1,9 @@
-// ============
 // == SERVER ==
-// ============
-(
-s = Server.local;
-s.boot; // BOOT
-)
-s.quit; // QUIT
+s = Server.local; s.boot; // BOOT
+s.quit;                   // QUIT (PANIC) C-c C-p q
+s.recorder
 
-
-// ============
 // == SYNTHS ==
-// ============
 (
 SynthDef(\decaySinEx, {|outBus = 0, effectBus, mix = 0.5, freq = 220|
     var src;
@@ -29,9 +22,7 @@ SynthDef(\reverbEx, {|outBus = 0, inBus|
 )
 
 
-// =============
 // == ROUTING ==
-// =============
 (
 ~sources = Group.new;
 ~effects = Group.after(~sources);     // make sure it's after
@@ -39,9 +30,7 @@ SynthDef(\reverbEx, {|outBus = 0, inBus|
 )
 
 
-// =================
 // == PERFORMANCE ==
-// =================
 (
 x = Synth(\reverbEx, [\inBus, ~bus], ~effects);
 y = Synth(\decaySinEx, [\effectBus, ~bus, \outBus, 0], ~sources);
