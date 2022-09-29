@@ -3,7 +3,7 @@
 // C-c C-s to STOP
 (
 //sappy emo electronica example...
-TempoClock(120/60); // 120 bpm
+//TempoClock(120/60); // 120 bpm
 SynthDef("patternefx_Ex", { arg out, in;
     var audio, efx;
     audio = In.ar([20,21],2);
@@ -33,7 +33,7 @@ SynthDef("bass_Ex", { arg out, freq = 1000, gate = 1, pan = 0, cut = 4000, rez =
     )
     }).add;
 
-SynthDescLib.global.read;
+//SynthDescLib.global.read;
 
 
 Pseq([
