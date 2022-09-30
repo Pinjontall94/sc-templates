@@ -15,4 +15,19 @@ w.view.decorator.reset;
 )
 
 
-k[0].value_(rrand(0.0,1.0));
+k[0].action_({ |knob| x.set(\freq, knob.value); });
+k[1].action_({ |knob| x.set(\detune, knob.value); });
+k[2].action_({ |knob| x.set(\pw, knob.value); });
+
+SynthDef(\sqr, {
+	|freq=200, detune=0, pw=0| var sig, env;
+	sig = Pulse.ar(
+		[freq, freq + (0.001 * detune)],
+		0.5 + (pw * 0.5),
+		0.2
+	) * 0.5;
+	Out.ar(0,sig)
+}).add;
+
+x = Synth(\sqr, [\freq, 400, \detune, 100]);
+x.free;
