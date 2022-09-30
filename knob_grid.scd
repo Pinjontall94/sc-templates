@@ -5,6 +5,7 @@ w = Window("Knob Grid", Rect(0, 0, 400, 400))
 .alwaysOnTop_(True);
 
 w.view.decorator_(FlowLayout(w.bounds, 15@15, 7@7));
+k = Array.fill(64, {Knob(w,40@40).mode_(\vert)});
 )
 
 (
@@ -13,5 +14,5 @@ w.view.children.collect(_.remove);
 w.view.decorator.reset;
 )
 
-k = Array.fill(64, {Knob(w,40@40)});
+
 k[0].value_(rrand(0.0,1.0));
